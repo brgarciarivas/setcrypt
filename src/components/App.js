@@ -67,6 +67,7 @@ class App extends Base {
         this.autoBind();
     }
     componentWillMount() {
+        console.log('go off')
         var self = this;
         var result = this.props.cryptCurrency.filter(function( coin ) {
 

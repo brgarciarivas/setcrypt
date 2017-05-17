@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
         ...mixins.fullHeight,
         ...mixins.column,
         ...mixins.flexStart,
+        alignItems: 'center',
         backgroundColor: colors.lightGray
     },
 });

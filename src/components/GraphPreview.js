@@ -25,6 +25,8 @@ class GraphPreview extends Base {
     }
 
     render() {
+        console.log('this.props.data')
+        console.log(this.props.data)
         return (
             <View style={styles.root}>
                 <View style={styles.textContainer}>

@@ -21,8 +21,8 @@ class RedditFeedTile extends Base {
 
    
     render() {
-        console.log('RedditFeedTile');
-        console.log(this.props);
+        // console.log('RedditFeedTile');
+        // console.log(this.props);
         return (
             <TouchableHighlight 
                 style={styles.root} 

@@ -38,7 +38,8 @@ export function fetchGraphData (params) {
     return dispatch => {
         api.getExt(`https://min-api.cryptocompare.com/data/histoday?fsym=${params.ticker}&tsym=${params.currency}\&limit=${params.time}`)
         .then(payload => {
-            
+            console.log('payload for graph data')
+            console.log(payload)
             var dataSet = payload.Data.map((data, index) => {
                 var day = moment(new Date(data.time * 1000)).utc();
                 return [ day.format('DD'), data.close];
@@ -56,7 +57,9 @@ export function highLowPrice (params) {
             
             var dataSet = payload.Data.map((data, index) => {
                 var day = moment(new Date(data.time * 1000)).utc();
-                return [ day.format('MMM DD'), data.close];
+                day = day.format('MMM DD')
+                day = parseInt(day)
+                return [ day, data.close];
             })
             dispatch(updateDataSet(dataSet))
         })
@@ -96,6 +99,8 @@ function updatePrice (currentPrice) {
     }
 }
 function updateDataSet(dataSet) {
+    console.log('dataSet')
+    console.log(dataSet)
     return {
         type: types.UPDATE_DATA_SET,
         dataSet: dataSet

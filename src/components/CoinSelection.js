@@ -56,12 +56,12 @@ const styles = StyleSheet.create({
         ...mixins.column,
         ...mixins.spaceAround
     },
-    // container:  {
-    //     ...mixins.fullWidth,
-    //     height: '80%',
-    //     ...mixins.row,
-    //     ...mixins.spaceAround
-    // },
+    container:  {
+        ...mixins.fullWidth,
+        height: '80%',
+        ...mixins.row,
+        ...mixins.spaceAround
+    },
     title: {
         alignSelf: 'flex-start',
         height: '20%',
