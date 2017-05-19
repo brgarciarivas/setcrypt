@@ -8,6 +8,8 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import Chart from 'react-native-chart';
+import { Bars, Pulse } from 'react-native-loader';
+import { SmoothLine } from 'react-native-pathjs-charts';
 
 import { fetchGraphData, getCurrentPrice } from '../actions/Currency';
 import Base from './Base';
@@ -25,8 +27,51 @@ class GraphPreview extends Base {
     }
 
     render() {
-        console.log('this.props.data')
-        console.log(this.props.data)
+        
+        let options = {
+            width: mixins.fullWidth.width * .6,
+            height: mixins.fullHeight.height * .2,
+            color: '#2980B9',
+            margin: {
+                top: 22,
+                left: 50,
+                bottom: 30,
+                right: 15
+            },
+            animate: {
+                type: 'delayed',
+                duration: 200
+            },
+            axisX: {
+                showAxis: false,
+                showLines: true,
+                showLabels: true,
+                showTicks: true,
+                zeroAxis: false,
+                orient: 'bottom',
+                label: {
+                    fontFamily: 'Arial',
+                    fontSize: 14,
+                    fontWeight: true,
+                    fill: '#34495E'
+                }
+            },
+            axisY: {
+                showAxis: false,
+                showLines: true,
+                showLabels: true,
+                showTicks: true,
+                zeroAxis: false,
+                orient: 'left',
+                label: {
+                    fontFamily: 'Arial',
+                    fontSize: 14,
+                    fontWeight: true,
+                    fill: '#34495E'
+                }
+            }
+        }
+
         return (
             <View style={styles.root}>
                 <View style={styles.textContainer}>
@@ -37,20 +82,13 @@ class GraphPreview extends Base {
                 <View style={styles.graphChart}>
                     {
                         this.props.data.length > 0 ? 
-                        <Chart 
-                            style={styles.chart}
-                            data={[this.props.data]}
-                            type='line'
-                            lineWidth={7}
-                            dataPointRadius={4}
-                            xAxisHeight={variables.SCREEN_HEIGHT*.022}
-                            showDataPoint
-                            yAxisWidth={variables.SCREEN_WIDTH*.1}
-                            hideVerticalGridLines
-                            hideHorizontalGridLines
-                            tightBounds
-                        /> :
-                        <Text>Graph</Text>
+                        <SmoothLine data={this.props.data} options={options} xKey='x' yKey='y' />
+                        :
+                        <Bars
+                            style={defaults.buffer}
+                            size={variables.LOADER_SIZE * 0.5}
+                            color={colors.primary}
+                        />
                     }
                 </View>
             </View>
@@ -70,17 +108,18 @@ const styles = StyleSheet.create({
 
     },
     textContainer: {
+        height: '60%',
         width: '20%',
         ...mixins.column,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'space-around',
+        ...fonts.bookMedium,
     },
     graphChart: {
         width: '78%',
         height: '90%',
         ...mixins.row,
-        justifyContent: 'flex-end'
-
+        ...mixins.center,
     },
     chart: {
         width: '100%',

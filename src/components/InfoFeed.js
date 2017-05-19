@@ -8,6 +8,8 @@ import {
 
 } from 'react-native';
 import { connect } from 'react-redux';
+import { Bars, Pulse } from 'react-native-loader';
+import { Actions } from 'react-native-router-flux';
 
 
     // consumer_key: 'GYLeNOpmeDdH08o26k1pCv1Yx',
@@ -31,13 +33,9 @@ class InfoFeed extends Base {
     }
 
     renderRow(rowData) {
-       
-
-        
         return (
             <RedditFeedTile
                 {...rowData}
-                onPress={() => console.log('tile was pressed')}
             />
         );
     }
@@ -55,7 +53,11 @@ class InfoFeed extends Base {
                             renderRow={this.renderRow}
                         />
                     : 
-                        console.log('not lit lit lit lit lit')
+                        <Bars
+                            style={defaults.buffer}
+                            size={variables.LOADER_SIZE * 0.5}
+                            color={colors.primary}
+                        />
                }
             </View>
         );

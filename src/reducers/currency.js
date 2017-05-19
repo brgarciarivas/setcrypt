@@ -24,7 +24,6 @@ export default function reducer(state = initialState, action) {
             reddit: action.thread
         }
     case types.UPDATE_DATA_SET:
-        console.log('data set updated')
         return {
             ...state,
             dataSet: action.dataSet   

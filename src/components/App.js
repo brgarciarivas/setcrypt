@@ -37,6 +37,7 @@ import InboxPage from './InboxPage';
 import Header from './Header';
 import Home from './Home';
 import GraphDetail from './GraphDetail';
+import ViewWeb from './ViewWeb';
 
 import { colors, defaults, fonts, mixins, variables } from '../styles';
 
@@ -112,18 +113,23 @@ class App extends Base {
                    key='root'
                    sceneStyle={styles.root}
                    navigationBarStyle={styles.navbar}
-               >
-                   <Scene 
-                       key='Home'
-                       title='Setcrypt'
-                       component={Home}
-                       initial
-                   />
-                   <Scene 
-                       key='GraphDetail'
-                       title='Setcrypt'
-                       component={GraphDetail}
-                   />
+                >
+                    <Scene 
+                        key='Home'
+                        title='Setcrypt'
+                        component={Home}
+                        initial
+                    />
+                    <Scene 
+                        key='GraphDetail'
+                        title='Setcrypt'
+                        component={GraphDetail}
+                    />
+                    <Scene 
+                        key='ViewWeb'
+                        title='Setcrypt'
+                        component={ViewWeb}
+                    />
 
                </Scene>
             </ReduxRouter>

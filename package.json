@@ -19,6 +19,7 @@
     "react": "^16.0.0-alpha.6",
     "react-native": "^0.44.0",
     "react-native-chart": "^1.0.8-beta",
+    "react-native-loader": "^1.1.0",
     "react-native-orientation": "^1.17.0",
     "react-native-router-flux": "^3.38.0",
     "react-native-vector-icons": "^4.0.1",

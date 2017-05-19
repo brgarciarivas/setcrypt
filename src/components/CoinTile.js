@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 
 import Base from './Base';
 
-import { fetchGraphData, getCurrentPrice, updateHomeCoin } from '../actions/Currency';
+import { fetchGraphData, getCurrentPrice, updateHomeCoin, fetchRedditThread } from '../actions/Currency';
 
 
 import { colors, defaults, fonts, mixins, variables } from '../styles';
@@ -44,6 +44,7 @@ class CoinTile extends Base {
             }
             console.log('params')
             console.log(params)
+            this.props.fetchRedditThread(params);
             this.props.updateHomeCoin(params);
             this.props.getCurrentPrice(params);
             this.props.fetchGraphData(params);
@@ -111,7 +112,8 @@ function mapDispatchToProps(dispatch) {
     return {
         fetchGraphData: (params) => dispatch(fetchGraphData(params)),
         getCurrentPrice: (params) => dispatch(getCurrentPrice(params)),
-        updateHomeCoin: (params) => dispatch(updateHomeCoin(params))
+        updateHomeCoin: (params) => dispatch(updateHomeCoin(params)),
+        fetchRedditThread: (params) => dispatch(fetchRedditThread(params)),
     };
 }
 

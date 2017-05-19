@@ -12,19 +12,20 @@ export function selectedCurrency(params) {
 }
 
 export function fetchRedditThread (params) {
+    if (params.name == 'Dash') {
+        params.name = 'dashpay';
+    }
     return dispatch =>  {
         api.getExt(`https://www.reddit.com/r/${params.name}.json`)
         .then(payload => {
-            console.log('payload for fetchRedditThread')
-            console.log(payload)
+           
             dispatch(updateReddit(payload.data.children))
         })
     }
 }
 
 export function fetchCurrencyData (params) {
-    console.log(params)
-    console.log('params')
+ 
     return dispatch => {
         api.getExt(`https://min-api.cryptocompare.com/data/generateAvg?fsym=${params.ticker}&tsym=${params.currency}&markets=${params.market}`)
         .then(payload => {
@@ -38,13 +39,16 @@ export function fetchGraphData (params) {
     return dispatch => {
         api.getExt(`https://min-api.cryptocompare.com/data/histoday?fsym=${params.ticker}&tsym=${params.currency}\&limit=${params.time}`)
         .then(payload => {
-            console.log('payload for graph data')
-            console.log(payload)
-            var dataSet = payload.Data.map((data, index) => {
-                var day = moment(new Date(data.time * 1000)).utc();
-                return [ day.format('DD'), data.close];
-            })
-            dispatch(updateDataSet(dataSet))
+       
+            var data = [];
+            var length = payload.Data.length;
+            var info = payload.Data;
+            for (var i = 0; i < length; i++) {
+                var day = moment(new Date(info[i].time * 1000)).utc();
+                data.push({'x': Number(day.format('DD')), 'y': info[i].close})
+            }
+           
+            dispatch(updateDataSet([data]))
         })
     };  
 }
@@ -83,6 +87,8 @@ export function updateReddit (thread) {
 }
 
 export function updateHomeCoin (params) {
+    console.log('updateHomeCoin params')
+    console.log(params)
     return {
         type: types.UPDATE_COIN,
         ticker: params.ticker,
@@ -99,8 +105,6 @@ function updatePrice (currentPrice) {
     }
 }
 function updateDataSet(dataSet) {
-    console.log('dataSet')
-    console.log(dataSet)
     return {
         type: types.UPDATE_DATA_SET,
         dataSet: dataSet
