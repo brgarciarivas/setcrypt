@@ -87,8 +87,7 @@ export function updateReddit (thread) {
 }
 
 export function updateHomeCoin (params) {
-    console.log('updateHomeCoin params')
-    console.log(params)
+    
     return {
         type: types.UPDATE_COIN,
         ticker: params.ticker,

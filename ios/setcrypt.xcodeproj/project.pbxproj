@@ -1301,6 +1301,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 7JQM8M6QG2;
@@ -1315,6 +1316,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.applification.setcrypt;
 				PRODUCT_NAME = setcrypt;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1324,6 +1326,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7JQM8M6QG2;
 				HEADER_SEARCH_PATHS = (
@@ -1337,6 +1340,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.applification.setcrypt;
 				PRODUCT_NAME = setcrypt;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

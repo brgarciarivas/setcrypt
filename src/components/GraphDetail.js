@@ -54,7 +54,7 @@ class GraphDetail extends Base {
         return (
             <View style={styles.root}>
                 <Text
-                    state={this.state.url}
+                    
                 >make it till 21</Text>
             </View>
         );
