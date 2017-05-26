@@ -11,6 +11,18 @@ export function selectedCurrency(params) {
     };
 }
 
+export function fetchMarketCap (params) {
+    return dispatch => {
+        api.getExt(`https://coinmarketcap-nexuist.rhcloud.com/api/${params.ticker}/market_cap`)
+        .then(payload =>  {
+            var currency = params.currency.toLowerCase()
+            var cap = payload[currency];
+
+            dispatch(updateMarketCap(cap))
+        })
+    }
+}
+
 export function fetchRedditThread (params) {
     if (params.name == 'Dash') {
         params.name = 'dashpay';
@@ -35,6 +47,17 @@ export function fetchCurrencyData (params) {
     }
 }
 
+
+export function fetchPriceChange (params) {
+    return dispatch => {
+        api.getExt(`https://coinmarketcap-nexuist.rhcloud.com/api/${params.ticker}/change`)
+        .then(payload => {
+        console.log(payload)
+        dispatch(updatePriceChange(payload))
+        })
+    }
+}
+
 export function fetchGraphData (params) {
     return dispatch => {
         api.getExt(`https://min-api.cryptocompare.com/data/histoday?fsym=${params.ticker}&tsym=${params.currency}\&limit=${params.time}`)
@@ -47,7 +70,7 @@ export function fetchGraphData (params) {
                 var day = moment(new Date(info[i].time * 1000)).utc();
                 data.push({'x': Number(day.format('DD')), 'y': info[i].close})
             }
-           
+            
             dispatch(updateDataSet([data]))
         })
     };  
@@ -55,7 +78,7 @@ export function fetchGraphData (params) {
 
 export function highLowPrice (params) {
     return dispatch => {
-        https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&limit=7&aggregate=7&e=CCCAGG
+        //https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&limit=7&aggregate=7&e=CCCAGG
         api.getExt(`https://min-api.cryptocompare.com/data/histoday?fsym=${params.ticker}&tsym=${params.currency}\&limit=${params.time}`)
         .then(payload => {
             
@@ -76,6 +99,20 @@ export function getCurrentPrice (params) {
         .then(payload => {
             dispatch(updatePrice(payload[params.currency]))
         })
+    }
+}
+
+export function updateMarketCap (cap) {
+    return {
+        type: types.UPDATE_MARKET_CAP,
+        cap
+    }
+}
+
+export function updatePriceChange (change) {
+    return {
+        type: types.UPDATE_PRICE_CHANGE,
+        change
     }
 }
 

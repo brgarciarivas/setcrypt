@@ -66,7 +66,7 @@ class InfoFeed extends Base {
 
 const styles = StyleSheet.create({
     root: {
-        marginTop: '2%',
+        marginTop: '1%',
         height: '54%',
         width: '100%',
         flex: 1,

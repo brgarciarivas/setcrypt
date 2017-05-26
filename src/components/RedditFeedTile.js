@@ -36,8 +36,7 @@ class RedditFeedTile extends Base {
             selftext
         } = this.props.data;
 
-        console.log(this.props.data)
-        console.log(selftext)
+       
         var image = preview == undefined ?  this.props.picUrl : preview.images[0].source.url
 
         return (
@@ -87,10 +86,10 @@ const styles = StyleSheet.create({
         ...mixins.row,
         ...mixins.center,
         ...mixins.createShadow(1),
-        backgroundColor: colors.white,
+        backgroundColor: colors.mainBlack,
         height: variables.MIN_TILE_HEIGHT,
         width: variables.SCREEN_WIDTH * .95,
-        borderRadius: 2,
+        borderRadius: 6,
         marginBottom: 8,
         alignItems: 'center',
        
@@ -104,9 +103,14 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
     },
     image: {
-        width: variables.SCREEN_WIDTH * .3,
-        height: variables.MIN_TILE_HEIGHT ,
-        flex: 1.5,
+        // width: variables.SCREEN_WIDTH * .3,
+        // height: variables.MIN_TILE_HEIGHT ,
+        marginLeft: '2%',
+        borderWidth: 1,
+        borderColor: colors.blue,
+        borderRadius: variables.SCREEN_WIDTH * .06,
+        width: variables.SCREEN_WIDTH * .12,
+        height: variables.SCREEN_WIDTH * .12,
     },
     textContainer: {
         paddingLeft: 8,
@@ -117,7 +121,8 @@ const styles = StyleSheet.create({
     },
     title: {
         ...fonts.bookMicro,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: colors.white,
     },
     infoContainer: {
         flex: 1,

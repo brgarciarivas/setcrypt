@@ -1,9 +1,9 @@
 // colors
-export const white = '#ffffff';
+export const white = '#FAFAFA';
 export const darkWhite = '#f8f9fb';
 export const lighterGray = '#fafafa';
 export const lightGray = '#e2e5ef';
-export const gray = '#6d7f83';
+//export const gray = '#6d7f83';
 export const darkGray = '#223641';
 export const red = '#FF5A5F';
 export const lightOrange = '#ff8C5D';
@@ -14,14 +14,26 @@ export const darkYellow = '#F59817';
 export const green = '#24E1B3';
 export const lightTeal = '#6BB8C2';
 export const teal = '#4996A0';
-export const lightBlue = '#80c9ee';
-export const blue = '#137EBA';
+//export const lightBlue = '#80c9ee';
+//export const blue = '#246EE9';
 export const darkBlue = '#0D5A85';
 export const lightPurple = '#B9C8ED';
-export const purple = '#666278';
+//export const purple = '#666278';
 export const darkPurple = '#4B0082';
 export const lighterTeal = '#4BBBC5';
 export const facebookBlue = '#3b5998';
+export const black = '#000000';
+
+//setcrypt colors
+export const mainBlack = '#191E34';
+export const lightBlack = '#161B33';
+export const purple = '#63739f';
+export const lightBlue = '#6195EE';
+export const blue = '#517DCF';
+export const gray = '#CFD2D8'
+
+
+
 
 export const primaryLight = lightPurple;
 export const primary = purple;

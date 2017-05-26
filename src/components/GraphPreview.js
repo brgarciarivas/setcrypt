@@ -29,13 +29,13 @@ class GraphPreview extends Base {
     render() {
         
         let options = {
-            width: mixins.fullWidth.width * .6,
-            height: mixins.fullHeight.height * .2,
-            color: '#2980B9',
+            width: mixins.fullWidth.width * .84,
+            height: mixins.fullHeight.height * .25,
+            color: colors.blue,
             margin: {
-                top: 22,
-                left: 50,
-                bottom: 30,
+                top: 5,
+                left: 55,
+                bottom: 22,
                 right: 15
             },
             animate: {
@@ -44,41 +44,34 @@ class GraphPreview extends Base {
             },
             axisX: {
                 showAxis: false,
-                showLines: true,
+                showLines: false,
                 showLabels: true,
-                showTicks: true,
                 zeroAxis: false,
                 orient: 'bottom',
                 label: {
                     fontFamily: 'Arial',
-                    fontSize: 14,
+                    fontSize: 11,
                     fontWeight: true,
-                    fill: '#34495E'
+                    fill: colors.white,
                 }
             },
             axisY: {
                 showAxis: false,
                 showLines: true,
                 showLabels: true,
-                showTicks: true,
                 zeroAxis: false,
                 orient: 'left',
                 label: {
                     fontFamily: 'Arial',
-                    fontSize: 14,
+                    fontSize: 11,
                     fontWeight: true,
-                    fill: '#34495E'
+                    fill: colors.white,
                 }
             }
         }
 
         return (
             <View style={styles.root}>
-                <View style={styles.textContainer}>
-                    <Text>{this.props.ticker}</Text>
-                    <Text>{this.props.currentPrice}</Text>
-                    <Text>{this.props.name}</Text>
-                </View>
                 <View style={styles.graphChart}>
                     {
                         this.props.data.length > 0 ? 
@@ -91,6 +84,12 @@ class GraphPreview extends Base {
                         />
                     }
                 </View>
+                 <View style={styles.textContainer}>
+                    <Text style={styles.price}>{this.props.currentPrice}</Text>
+                    <Text style={styles.ticker}>{this.props.ticker}</Text>
+                    <Text style={styles.ticker}>{this.props.priceChange}</Text>
+                    
+                </View>
             </View>
         );
     }
@@ -98,32 +97,35 @@ class GraphPreview extends Base {
 
 const styles = StyleSheet.create({
     root: {
-        height: '30%',
+        height: mixins.fullHeight.height * .38,
         width: '95%',
-        ...mixins.row,
+        ...mixins.column,
         ...mixins.center,
-        justifyContent: 'space-between',
-        backgroundColor: colors.white,
+        justifyContent: 'flex-start',
+        backgroundColor: colors.mainBlack,
         borderRadius: 6,
 
     },
     textContainer: {
-        height: '60%',
-        width: '20%',
-        ...mixins.column,
+        height: '6%',
+        width: '70%',
+        ...mixins.row,
         alignItems: 'center',
         justifyContent: 'space-around',
         ...fonts.bookMedium,
     },
     graphChart: {
-        width: '78%',
-        height: '90%',
         ...mixins.row,
         ...mixins.center,
     },
-    chart: {
-        width: '100%',
-        height: '100%',
+    textInfo: {
+        color: colors.blue,
+    },
+    price:  {
+        color: colors.green,
+    },
+    ticker: {
+        color: colors.red,
     }
 });
 
@@ -133,6 +135,8 @@ function mapStateToProps({currency}) {
         ticker: currency.ticker,
         currentPrice: currency.currentPrice,
         name: currency.name,
+        priceChange: currency.priceChange,
+        marketCap: currency.marketCap,
     };
 }
 

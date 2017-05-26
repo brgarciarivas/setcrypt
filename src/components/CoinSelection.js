@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-start',
         height: '20%',
         marginLeft: '2%',
-        color: colors.gray,
+        color: colors.mainBlack,
         ...fonts.bookTiny,
     }
 });

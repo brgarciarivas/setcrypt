@@ -11,7 +11,7 @@ import reducers from '../reducers';
 //import rootSaga from '../sagas';
 
 
-import { fetchGraphData, getCurrentPrice, updateHomeCoin, fetchRedditThread } from '../actions/Currency';
+import { fetchGraphData, getCurrentPrice, updateHomeCoin, fetchRedditThread, fetchPriceChange, fetchMarketCap } from '../actions/Currency';
 
 
 
@@ -81,7 +81,9 @@ class App extends Base {
             updateHomeCoin,
             getCurrentPrice,
             fetchGraphData,
-            fetchRedditThread
+            fetchRedditThread,
+            fetchPriceChange,
+            fetchMarketCap,
         } = this.props;
         var params = {
             ticker: result[0].ticker,
@@ -95,7 +97,9 @@ class App extends Base {
         updateHomeCoin(params);
         getCurrentPrice(params);
         fetchGraphData(params);
-        fetchRedditThread(params)
+        fetchRedditThread(params);
+        fetchPriceChange(params);
+        fetchMarketCap(params);
     }
     componentDidUpdate(prevProps) {
     }
@@ -152,6 +156,8 @@ function mapDispatchToProps(dispatch) {
         getCurrentPrice: (params) => dispatch(getCurrentPrice(params)),
         updateHomeCoin: (params) => dispatch(updateHomeCoin(params)),
         fetchRedditThread: (params) => dispatch(fetchRedditThread(params)),
+        fetchPriceChange: (params) => dispatch(fetchPriceChange(params)),
+        fetchMarketCap: (params) => dispatch(fetchMarketCap(params)),
     };
 }
 

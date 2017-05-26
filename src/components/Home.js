@@ -3,8 +3,8 @@ import {
     StyleSheet,
     Text,
     View,
-    ListView
-
+    ListView,
+    ScrollView
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Actions } from 'react-native-router-flux';
@@ -24,11 +24,12 @@ export default class Home extends Base {
             <View style={defaults.navBar}>
                 <IconButton
                     iconName='gear'
-                    
+                    color={colors.mainBlack}
                 />
                 <Text style={defaults.navBarTitle}>{props.title}</Text>
                 <IconButton
                     iconName='area-chart'
+                    color={colors.mainBlack}
                     onPress={() => Actions.GraphDetail({ type: 'push' })}
                 />
             </View>
@@ -42,9 +43,13 @@ export default class Home extends Base {
     render() {
         return (
             <View style={styles.root}>
-               <CoinSelection/>
-               <GraphPreview/>
-               <InfoFeed/>
+                <ScrollView
+                    contentContainerStyle={styles.container}
+                >
+                    <CoinSelection/>
+                    <GraphPreview/>
+                    <InfoFeed/>
+                </ScrollView>
             </View>
         );
     }
@@ -57,7 +62,12 @@ const styles = StyleSheet.create({
         ...mixins.column,
         ...mixins.flexStart,
         alignItems: 'center',
-        backgroundColor: colors.lightGray
+        backgroundColor: colors.purple,
     },
+    container:{
+         ...mixins.fullWidth,
+        alignItems: 'center',
+        ...mixins.column,
+        ...mixins.flexStart,
+    }
 });
-

@@ -13,11 +13,24 @@ const initialState = {
     dataSet: [],
     currentPrice: '',
     market: '',
+    priceChange: null,
+    marketCap: null,
 };
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
-
+    case types.UPDATE_MARKET_CAP: {
+        return {
+            ...state,
+            marketCap: action.cap
+        }
+    }
+    case types.UPDATE_PRICE_CHANGE: {
+        return {
+            ...state,
+            priceChange: action.change
+        }
+    }
     case types.UPDATE_REDDIT_THREAD:
         return {
             ...state,
