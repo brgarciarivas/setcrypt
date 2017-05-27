@@ -6,6 +6,7 @@ import {
     ListView,
     ScrollView
 } from 'react-native';
+import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Actions } from 'react-native-router-flux';
 
@@ -17,7 +18,7 @@ import IconButton from './IconButton';
 
 import { colors, defaults, fonts, mixins, variables } from '../styles';
 
-export default class Home extends Base {
+class Home extends Base {
 
     static renderNavigationBar(props) {
         return (
@@ -47,7 +48,13 @@ export default class Home extends Base {
                     contentContainerStyle={styles.container}
                 >
                     <CoinSelection/>
+                    <Text style={styles.title}>
+                        7 Day Historical Graph
+                    </Text>
                     <GraphPreview/>
+                    <Text style={styles.title}>
+                        R/{this.props.name} Reddit Feed
+                    </Text>
                     <InfoFeed/>
                 </ScrollView>
             </View>
@@ -69,5 +76,28 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         ...mixins.column,
         ...mixins.flexStart,
+    },
+    title: {
+        color: colors.white,
+        ...fonts.bookSmall,
+        marginTop: 10,
+        marginBottom: 10,
     }
 });
+
+
+function mapStateToProps({currency}) {
+    return {
+        
+        name: currency.name,
+        
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

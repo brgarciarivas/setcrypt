@@ -36,7 +36,6 @@ class CoinSelection extends Base {
     render() {
         return (
             <View style={styles.root}>
-                <Text style={styles.title}>Your Cards</Text>
                 <ScrollView 
                     style={styles.container}
                     horizontal={true}
@@ -51,10 +50,11 @@ class CoinSelection extends Base {
 
 const styles = StyleSheet.create({
     root: {
+        height: 60,
+        marginTop: 16,
         ...mixins.fullWidth,
-        height: 90,
         ...mixins.column,
-        ...mixins.spaceAround
+        ...mixins.spaceAround,
     },
     container:  {
         ...mixins.fullWidth,
@@ -62,13 +62,6 @@ const styles = StyleSheet.create({
         ...mixins.row,
         ...mixins.spaceAround
     },
-    title: {
-        alignSelf: 'flex-start',
-        height: '20%',
-        marginLeft: '2%',
-        color: colors.mainBlack,
-        ...fonts.bookTiny,
-    }
 });
 
 function mapStateToProps({ settings }) {

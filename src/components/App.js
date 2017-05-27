@@ -11,9 +11,7 @@ import reducers from '../reducers';
 //import rootSaga from '../sagas';
 
 
-import { fetchGraphData, getCurrentPrice, updateHomeCoin, fetchRedditThread, fetchPriceChange, fetchMarketCap } from '../actions/Currency';
-
-
+import { ToggleHomeCoin } from '../actions/env';
 
 // connects react router to redux to pass scene info
 const ReduxRouter = connect()(Router);
@@ -78,12 +76,7 @@ class App extends Base {
         console.log(result[0])
 
         const {
-            updateHomeCoin,
-            getCurrentPrice,
-            fetchGraphData,
-            fetchRedditThread,
-            fetchPriceChange,
-            fetchMarketCap,
+            ToggleHomeCoin,
         } = this.props;
         var params = {
             ticker: result[0].ticker,
@@ -94,12 +87,7 @@ class App extends Base {
             market: result[0].market
         }
         
-        updateHomeCoin(params);
-        getCurrentPrice(params);
-        fetchGraphData(params);
-        fetchRedditThread(params);
-        fetchPriceChange(params);
-        fetchMarketCap(params);
+        ToggleHomeCoin(params);
     }
     componentDidUpdate(prevProps) {
     }
@@ -152,12 +140,7 @@ function mapStateToProps({ settings } ) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        fetchGraphData: (params) => dispatch(fetchGraphData(params)),
-        getCurrentPrice: (params) => dispatch(getCurrentPrice(params)),
-        updateHomeCoin: (params) => dispatch(updateHomeCoin(params)),
-        fetchRedditThread: (params) => dispatch(fetchRedditThread(params)),
-        fetchPriceChange: (params) => dispatch(fetchPriceChange(params)),
-        fetchMarketCap: (params) => dispatch(fetchMarketCap(params)),
+        ToggleHomeCoin: (params) => dispatch(ToggleHomeCoin(params)),
     };
 }
 

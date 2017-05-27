@@ -66,16 +66,15 @@ class InfoFeed extends Base {
 
 const styles = StyleSheet.create({
     root: {
-        marginTop: '1%',
-        height: '54%',
         width: '100%',
-        flex: 1,
         ...mixins.column,
-        ...mixins.center,
+        alignItems: 'center',
     },
     container: {
+        flex: 1,
+        alignSelf: 'center',
         alignItems: 'center',
-        marginTop: variables.HEADER_HEIGHT * .3
+        justifyContent: 'flex-start',
     },
 });
 

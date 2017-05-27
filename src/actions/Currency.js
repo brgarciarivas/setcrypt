@@ -30,7 +30,10 @@ export function fetchRedditThread (params) {
     return dispatch =>  {
         api.getExt(`https://www.reddit.com/r/${params.name}.json`)
         .then(payload => {
-           
+            console.log('thread')
+            console.log(payload.data.children)
+            payload.data.children.shift();
+            console.log(payload.data.children)
             dispatch(updateReddit(payload.data.children))
         })
     }
@@ -70,7 +73,11 @@ export function fetchGraphData (params) {
                 var day = moment(new Date(info[i].time * 1000)).utc();
                 data.push({'x': Number(day.format('DD')), 'y': info[i].close})
             }
-            
+            console.log('data graph')
+            console.log(data)
+            console.log('shift that bitch')
+            //data.shift()
+            console.log(data)
             dispatch(updateDataSet([data]))
         })
     };  

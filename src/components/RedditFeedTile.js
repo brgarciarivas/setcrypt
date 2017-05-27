@@ -59,8 +59,11 @@ class RedditFeedTile extends Base {
                         
                     </View>
                     <View style={styles.infoContainer}>
-                        <Text style={[styles.infoText, { color: colors.red}]}>{author}</Text>
-                        <View style={[ {...mixins.row, ...mixins.center}]}>
+                        <Text 
+                            style={[styles.infoText, { color: colors.white}, { ...fonts.bookMicro}]}
+                            numberOfLines={1}
+                        >/{author}</Text>
+                        <View style={styles.upvote}>
                             <IconButton 
                                 iconName='arrow-up'
                                 containerStyle={styles.iconContainer}
@@ -133,14 +136,14 @@ const styles = StyleSheet.create({
         height: '80%',
     },
     infoText: {
-        ...fonts.bookMicro,
-        marginBottom: 8,
+        ...fonts.bookTiny,
+        color: colors.white,
     },
     iconContainer: {
         width: 20,
         height: 20,
         borderRadius: 20/2,
-        backgroundColor: colors.blue,
+        backgroundColor: colors.green,
         ...mixins.column,
         ...mixins.center,
         marginRight: 5,
@@ -148,7 +151,11 @@ const styles = StyleSheet.create({
     icon: {
         color: colors.white,
         fontSize: 12,
-    }
+    },
+    upvote: {
+        ...mixins.row,
+        ...mixins.center,
+    },
 });
 
 function mapStateToProps({currency}) {

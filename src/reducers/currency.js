@@ -11,7 +11,7 @@ const initialState = {
     },
     picUrl: '',
     dataSet: [],
-    currentPrice: '',
+    currentPrice: null,
     market: '',
     priceChange: null,
     marketCap: null,
