@@ -60,7 +60,7 @@ class RedditFeedTile extends Base {
                     </View>
                     <View style={styles.infoContainer}>
                         <Text 
-                            style={[styles.infoText, { color: colors.white}, { ...fonts.bookMicro}]}
+                            style={[styles.infoText, { color: colors.black}, { ...fonts.bookMicro}]}
                             numberOfLines={1}
                         >/{author}</Text>
                         <View style={styles.upvote}>
@@ -88,13 +88,14 @@ const styles = StyleSheet.create({
     root: {
         ...mixins.row,
         ...mixins.center,
-        ...mixins.createShadow(1),
-        backgroundColor: colors.mainBlack,
-        height: variables.MIN_TILE_HEIGHT,
+        ...mixins.createShadow(2),
+        backgroundColor: colors.primaryLight,
+        height: variables.primaryLight,
         width: variables.SCREEN_WIDTH * .95,
         borderRadius: 6,
-        marginBottom: 8,
+        marginBottom: 10,
         alignItems: 'center',
+
        
     },
     container: {
@@ -109,11 +110,9 @@ const styles = StyleSheet.create({
         // width: variables.SCREEN_WIDTH * .3,
         // height: variables.MIN_TILE_HEIGHT ,
         marginLeft: '2%',
-        borderWidth: 1,
-        borderColor: colors.blue,
-        borderRadius: variables.SCREEN_WIDTH * .06,
-        width: variables.SCREEN_WIDTH * .12,
-        height: variables.SCREEN_WIDTH * .12,
+        borderRadius: variables.SCREEN_WIDTH * .05,
+        width: variables.SCREEN_WIDTH * .1,
+        height: variables.SCREEN_WIDTH * .1,
     },
     textContainer: {
         paddingLeft: 8,
@@ -125,7 +124,7 @@ const styles = StyleSheet.create({
     title: {
         ...fonts.bookMicro,
         fontWeight: 'bold',
-        color: colors.white,
+        color: colors.black,
     },
     infoContainer: {
         flex: 1,
@@ -137,7 +136,7 @@ const styles = StyleSheet.create({
     },
     infoText: {
         ...fonts.bookTiny,
-        color: colors.white,
+        color: colors.black,
     },
     iconContainer: {
         width: 20,

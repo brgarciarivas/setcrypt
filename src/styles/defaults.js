@@ -81,8 +81,8 @@ export const navBar = {
     width: variables.SCREEN_WIDTH,
     alignItems: 'center',
     color: colors.primary,
-    backgroundColor: colors.purple,
-    ...mixins.createShadow(2),
+    backgroundColor: colors.secondaryDark,
+    ...mixins.createShadow(1),
 };
 
 export const navNoIcon = {
@@ -93,7 +93,7 @@ export const navNoIcon = {
 export const navBarIcon = {
     ...mixins.centerSelf,
     flex: 1,
-    color: colors.mainBlack
+    color: colors.accent
 };
 
 export const navBarTitle = {
@@ -101,7 +101,7 @@ export const navBarTitle = {
     flex: 11,
     textAlign: 'center',
     alignSelf: 'flex-end',
-    color: colors.white,
+    color: colors.teal,
     backgroundColor: colors.transparent,
     paddingBottom: 6
 };

@@ -47,12 +47,13 @@ class CoinTile extends Base {
         }
     }
     render() {
-        var tileColor = this.props.selected === this.props.ticker ? colors.lightBlue : colors.lightBlack;
+        var shadow = this.props.selected === this.props.ticker ? 3 : 1;
+
         return (
             
             <TouchableOpacity
                 onPress={this.handleClick}
-                style={[styles.root, { backgroundColor: tileColor }]}
+                style={[styles.root, {...mixins.createShadow(shadow)}]}
             >
                 <View >
                     <Image
@@ -74,14 +75,14 @@ const styles = StyleSheet.create({
     root: {
         width: 90,
         height: 60,
-        backgroundColor: '#171D35',
+        backgroundColor: colors.primaryLight,
         borderRadius: 6,
         ...mixins.column,
         ...mixins.center,
         marginLeft: 10,
         marginRight: 10,
-        borderWidth: 2,
-        borderColor: colors.lightBlue,
+        // borderWidth: 2,
+        // borderColor: colors.lightBlue,
     },
     image: {
         alignSelf: 'center',
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
         marginTop: '1.5%',
         textAlign: 'center',
         ...fonts.bookTiny,
-        color: colors.white
+        color: colors.black
     }
 });
 

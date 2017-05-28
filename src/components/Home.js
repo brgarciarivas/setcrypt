@@ -52,7 +52,7 @@ class Home extends Base {
                         7 Day Historical Graph
                     </Text>
                     <GraphPreview/>
-                    <Text style={styles.title}>
+                    <Text style={[styles.title, {marginTop: 10,}]}>
                         R/{this.props.name} Reddit Feed
                     </Text>
                     <InfoFeed/>
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
         ...mixins.column,
         ...mixins.flexStart,
         alignItems: 'center',
-        backgroundColor: colors.purple,
+        backgroundColor: colors.secondaryDark,
     },
     container:{
          ...mixins.fullWidth,
@@ -78,9 +78,8 @@ const styles = StyleSheet.create({
         ...mixins.flexStart,
     },
     title: {
-        color: colors.white,
-        ...fonts.bookSmall,
-        marginTop: 10,
+        color: colors.setTeal,
+        ...fonts.bookMicro,
         marginBottom: 10,
     }
 });

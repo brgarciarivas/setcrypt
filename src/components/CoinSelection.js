@@ -50,7 +50,7 @@ class CoinSelection extends Base {
 
 const styles = StyleSheet.create({
     root: {
-        height: 60,
+        height: 75,
         marginTop: 16,
         ...mixins.fullWidth,
         ...mixins.column,

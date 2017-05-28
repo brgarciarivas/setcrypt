@@ -1,6 +1,7 @@
 package com.setcrypt;
 
 import com.facebook.react.ReactActivity;
+import com.github.wuxudong.rncharts.MPAndroidChartPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.github.yamill.orientation.OrientationPackage;
 

@@ -66,7 +66,7 @@ class InfoFeed extends Base {
 
 const styles = StyleSheet.create({
     root: {
-        width: '100%',
+        borderRadius: 6,
         ...mixins.column,
         alignItems: 'center',
     },
