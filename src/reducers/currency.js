@@ -10,7 +10,9 @@ const initialState = {
         low: '',
     },
     picUrl: '',
-    dataSet: [],
+    lgPic: '',
+    xData: [],
+    yData: [],
     currentPrice: null,
     market: '',
     priceChange: null,
@@ -39,7 +41,8 @@ export default function reducer(state = initialState, action) {
     case types.UPDATE_DATA_SET:
         return {
             ...state,
-            dataSet: action.dataSet   
+            xData: action.dataSet.x,
+            yData: action.dataSet.y   
         }
     case types.CURRENCY_PRICE:
         return {
@@ -47,12 +50,14 @@ export default function reducer(state = initialState, action) {
             currentPrice: action.currentPrice
         }
     case types.UPDATE_COIN:
+        console.log(action)
         return {
             ...state,
             ticker: action.ticker,
             name: action.name,
             picUrl: action.url,
             market: action.market,
+            lgPic: action.pic,
         }
         default:
             return state;

@@ -30,10 +30,8 @@ export function fetchRedditThread (params) {
     return dispatch =>  {
         api.getExt(`https://www.reddit.com/r/${params.name}.json`)
         .then(payload => {
-            console.log('thread')
-            console.log(payload.data.children)
+            
             payload.data.children.shift();
-            console.log(payload.data.children)
             dispatch(updateReddit(payload.data.children))
         })
     }
@@ -66,19 +64,18 @@ export function fetchGraphData (params) {
         api.getExt(`https://min-api.cryptocompare.com/data/histoday?fsym=${params.ticker}&tsym=${params.currency}\&limit=${params.time}`)
         .then(payload => {
        
-            var data = [];
+            var xData = [];
+            var yData = [];
             var length = payload.Data.length;
             var info = payload.Data;
             for (var i = 0; i < length; i++) {
                 var day = moment(new Date(info[i].time * 1000)).utc();
-                data.push({'x': Number(day.format('DD')), 'y': info[i].close})
+                yData.push({'y': info[i].close});
+                xData.push(Number(day.format('DD')));
             }
-            console.log('data graph')
-            console.log(data)
-            console.log('shift that bitch')
-            //data.shift()
-            console.log(data)
-            dispatch(updateDataSet([data]))
+            
+            var dataSet = { x: xData, y: yData};
+            dispatch(updateDataSet(dataSet))
         })
     };  
 }
@@ -137,7 +134,8 @@ export function updateHomeCoin (params) {
         ticker: params.ticker,
         name: params.name,
         url: params.url,
-        market: params.market
+        market: params.market,
+        pic: params.pic,
     };   
 }
 

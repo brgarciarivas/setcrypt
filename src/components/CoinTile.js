@@ -39,9 +39,11 @@ class CoinTile extends Base {
                 currency: this.props.currency,
                 time: '7',
                 url: result[0].url,
-                market: result[0].market
+                market: result[0].market,
+                pic: result[0].pic,
             }
-           
+            console.log('pic')
+            console.log(params.pic)
             this.props.ToggleHomeCoin(params);
     
         }

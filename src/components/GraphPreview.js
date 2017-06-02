@@ -44,21 +44,22 @@ export default class GraphPreview extends Base {
     render() {
         
        
-        console.log('check')
+        
         var check = this.props.priceChange
         console.log(typeof check) 
         var priceChange = check > 0;
 
-        console.log('priceChange')
-        console.log(priceChange)
-        var changeColor = priceChange ? {color: colors.green} : {color: colors.red};
+       
+        var changeColor = priceChange ? {color: colors.green} : {color: colors.red};2
 
         var changeIcon = priceChange ? 'caret-up' : 'caret-down';
 
         return (
             <View style={styles.root}>
                 <SmallGraph/>
-                <GraphPreviewInfo/>
+                {
+                    //<GraphPreviewInfo/>
+                }
             </View>
         );
     }

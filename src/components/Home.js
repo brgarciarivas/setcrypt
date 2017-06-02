@@ -49,7 +49,7 @@ class Home extends Base {
                 >
                     <CoinSelection/>
                     <Text style={styles.title}>
-                        7 Day Historical Graph
+                        {this.props.name} 7 Day Historical Graph
                     </Text>
                     <GraphPreview/>
                     <Text style={[styles.title, {marginTop: 10,}]}>

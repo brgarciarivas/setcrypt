@@ -35,7 +35,7 @@ class GraphPreviewInfo extends Base {
     }
     calculatePercentChange() {
        
-        var change = getPercentChange(this.props.data)
+        var change = getPercentChange(this.props.y)
         
         this.props.updatePriceChange(change)
         return change;
@@ -43,13 +43,10 @@ class GraphPreviewInfo extends Base {
     render() {
         
        
-        console.log('check')
         var check = this.props.priceChange
-        console.log(typeof check) 
         var priceChange = check > 0;
 
-        console.log('priceChange')
-        console.log(priceChange)
+       
         var changeColor = priceChange ? {color: colors.green} : {color: colors.red};
 
         var changeIcon = priceChange ? 'caret-up' : 'caret-down';
@@ -165,7 +162,8 @@ const styles = StyleSheet.create({
 
 function mapStateToProps({currency}) {
     return {
-        data: currency.dataSet,
+        data: currency.xData,
+        y: currency.yData,
         ticker: currency.ticker,
         currentPrice: currency.currentPrice,
         name: currency.name,

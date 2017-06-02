@@ -84,9 +84,11 @@ class App extends Base {
             currency: this.props.currency,
             time: '7',
             url: result[0].url,
+            pic: result[0].pic,
             market: result[0].market
         }
-        
+        console.log('app params')
+        console.log(params)
         ToggleHomeCoin(params);
     }
     componentDidUpdate(prevProps) {

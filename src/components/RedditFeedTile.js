@@ -37,8 +37,7 @@ class RedditFeedTile extends Base {
         } = this.props.data;
 
        
-        var image = preview == undefined ?  this.props.picUrl : preview.images[0].source.url
-
+        var image = preview == undefined ?  this.props.lgPic : preview.images[0].source.url
         return (
             <TouchableHighlight 
                 style={styles.root} 
@@ -52,7 +51,7 @@ class RedditFeedTile extends Base {
                     <View style={styles.textContainer}>
                         <Text 
                             style={styles.title}
-                            numberOfLines={3}
+                            numberOfLines={1}
                         >
                             {title}
                         </Text>
@@ -152,6 +151,7 @@ const styles = StyleSheet.create({
         fontSize: 12,
     },
     upvote: {
+        marginTop: 4,
         ...mixins.row,
         ...mixins.center,
     },
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
 
 function mapStateToProps({currency}) {
     return { 
-        picUrl: currency.picUrl
+        lgPic: currency.lgPic,
     };
 }
 

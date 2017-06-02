@@ -1,13 +1,12 @@
 
 export function getPercentChange (data) {
-    var prices = data[0]
-    var length = data[0].length;
-    var a = prices[length -1].y;
-    console.log('a ');
-    console.log(a)
-    var b = prices[0].y
-    console.log('b ');
-    console.log(b)
+
+    
+    var length = data.length;
+    var a = data[length -1].y;
+   
+    var b = data[0].y
+    
     var diff = a - b;
     var div = diff / b;
     var change = div + 1
@@ -18,9 +17,7 @@ export function getPercentChange (data) {
 
 
 export function roundNumber (num, digits) {
-    console.log('roundNumber')
-    console.log(num)
-    console.log(typeof num)
+   
     var si = [
     { value: 1E18, symbol: "E" },
     { value: 1E15, symbol: "P" },

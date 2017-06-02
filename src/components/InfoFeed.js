@@ -40,8 +40,7 @@ class InfoFeed extends Base {
         );
     }
     render() {
-        console.log('InfoFeed')
-        console.log(this.props)
+        
         return (
             <View style={styles.root}>
                {
