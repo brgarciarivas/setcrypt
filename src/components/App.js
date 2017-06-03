@@ -66,14 +66,12 @@ class App extends Base {
         this.autoBind();
     }
     componentWillMount() {
-        console.log('go off')
         var self = this;
         var result = this.props.cryptCurrency.filter(function( coin ) {
 
             return coin.ticker == self.props.ticker;
         });
-        console.log('we mad lit')
-        console.log(result[0])
+       
 
         const {
             ToggleHomeCoin,
@@ -83,12 +81,9 @@ class App extends Base {
             name: result[0].name,
             currency: this.props.currency,
             time: '7',
-            url: result[0].url,
-            pic: result[0].pic,
             market: result[0].market
         }
-        console.log('app params')
-        console.log(params)
+       
         ToggleHomeCoin(params);
     }
     componentDidUpdate(prevProps) {
@@ -99,7 +94,6 @@ class App extends Base {
     
     
     render() {
-        console.log('App render');
 
         return (
             <ReduxRouter>

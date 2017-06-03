@@ -15,7 +15,7 @@ const initialState = {
     yData: [],
     currentPrice: null,
     market: '',
-    priceChange: null,
+    priceChange: 0,
     marketCap: null,
 };
 

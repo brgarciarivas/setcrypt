@@ -133,9 +133,7 @@ export function updateHomeCoin (params) {
         type: types.UPDATE_COIN,
         ticker: params.ticker,
         name: params.name,
-        url: params.url,
         market: params.market,
-        pic: params.pic,
     };   
 }
 

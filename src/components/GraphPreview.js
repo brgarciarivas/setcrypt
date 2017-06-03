@@ -18,8 +18,6 @@ import SmallGraph from './SmallGraph';
 import GraphPreviewInfo from './GraphPreviewInfo';
 
 import api from '../scripts/api';
-import { getPercentChange } from '../scripts/formatter';
-import { fetchGraphData, getCurrentPrice, updatePriceChange} from '../actions/Currency';
 
 import { colors, defaults, fonts, mixins, variables } from '../styles';
 
@@ -29,36 +27,17 @@ import { colors, defaults, fonts, mixins, variables } from '../styles';
 export default class GraphPreview extends Base {
     constructor(props, context) {
         super(props, context);
-        this.autoBind('calculatePercentChange');
-        this.state = {
-            priceChange: 0,
-        }
     }
-    calculatePercentChange() {
-       
-        var change = getPercentChange(this.props.data)
-        
-        this.props.updatePriceChange(change)
-        return change;
-    }
+    
     render() {
         
        
-        
-        var check = this.props.priceChange
-        console.log(typeof check) 
-        var priceChange = check > 0;
-
-       
-        var changeColor = priceChange ? {color: colors.green} : {color: colors.red};2
-
-        var changeIcon = priceChange ? 'caret-up' : 'caret-down';
-
+    
         return (
             <View style={styles.root}>
                 <SmallGraph/>
                 {
-                    //<GraphPreviewInfo/>
+                    <GraphPreviewInfo/>
                 }
             </View>
         );

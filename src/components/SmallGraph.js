@@ -32,9 +32,8 @@ class SmallGraph extends Base {
         }
     }
     componentWillReceiveProps(nextProps) {
-        console.log('componentWillReceiveProps')
-        console.log(nextProps)
-            
+    
+        
     }
     handleSelect(event) {
         console.log(event)

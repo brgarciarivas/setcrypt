@@ -32,14 +32,25 @@ class GraphPreviewInfo extends Base {
         this.state = {
             priceChange: 0,
         }
+        
     }
     calculatePercentChange() {
        
         var change = getPercentChange(this.props.y)
         
         this.props.updatePriceChange(change)
-        return change;
+        
     }
+
+    componentWillReceiveProps(nextProps) {
+        
+        if (this.props.y.length < 1 && nextProps.y.length > 1) {
+            var change = getPercentChange(nextProps.y);
+            this.props.updatePriceChange(change)
+        }
+        
+    }
+
     render() {
         
        
@@ -63,7 +74,7 @@ class GraphPreviewInfo extends Base {
 
                         {
                             this.props.data.length > 0 ?
-                            this.calculatePercentChange()
+                            this.props.priceChange
                             :
                             'N/A'
                         }%

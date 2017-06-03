@@ -20,7 +20,7 @@ import { colors, defaults, fonts, mixins, variables } from '../styles';
 class CoinTile extends Base {
     constructor(props, context) {
         super(props, context);
-        this.autoBind('handleClick');
+        this.autoBind('handleClick', 'getImage');
     }
     handleClick(){
         var self = this;
@@ -38,18 +38,30 @@ class CoinTile extends Base {
                 name: result[0].name,
                 currency: this.props.currency,
                 time: '7',
-                url: result[0].url,
                 market: result[0].market,
-                pic: result[0].pic,
             }
-            console.log('pic')
-            console.log(params.pic)
+          
             this.props.ToggleHomeCoin(params);
     
         }
     }
+    getImage() {
+        var images = {
+            BTC: require(`../images/smallBTC.png`),
+            DASH: require(`../images/smallDASH.png`),
+            ETH: require(`../images/smallETH.png`),
+            LTC: require(`../images/smallLTC.png`),
+            XMR: require(`../images/smallXMR.png`),
+            XRP: require(`../images/smallXRP.png`),
+        };
+        
+        return images[this.props.ticker]
+    }
     render() {
+
         var shadow = this.props.selected === this.props.ticker ? 3 : 1;
+
+
 
         return (
             
@@ -60,7 +72,7 @@ class CoinTile extends Base {
                 <View >
                     <Image
                         style={styles.image}
-                        source={{uri: this.props.url}}
+                        source={this.getImage()}
                     />
                     <Text
                         style={styles.text}
@@ -104,7 +116,7 @@ function mapStateToProps({ currency, settings }) {
     return {
         selected: currency.ticker,
         cryptCurrency: settings.cryptCurrency,
-        currency: currency.currency
+        currency: currency.currency,
     };
 }
 
