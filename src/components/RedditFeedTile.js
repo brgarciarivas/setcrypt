@@ -22,9 +22,20 @@ class RedditFeedTile extends Base {
         this.autoBind();
     }
 
-   
+    getImage() {
+        
+    }
     render() {
-      
+        
+        var listImg = {
+            BTC: require(`../images/bigBTC.png`),
+            DASH: require(`../images/bigDASH.png`),
+            ETH: require(`../images/bigETH.jpg`),
+            LTC: require(`../images/bigLTC.png`),
+            XMR: require(`../images/bigXMR.jpg`),
+            XRP: require(`../images/bigXRP.png`),
+        };
+        
         const {
             author,
             permalink,
@@ -37,7 +48,7 @@ class RedditFeedTile extends Base {
         } = this.props.data;
 
        
-        var image = preview == undefined ?  this.props.lgPic : preview.images[0].source.url
+        var image = preview == undefined ?  listImg[this.props.ticker] : { uri: preview.images[0].source.url}
         return (
             <TouchableHighlight 
                 style={styles.root} 
@@ -45,7 +56,7 @@ class RedditFeedTile extends Base {
             >
                 <View style={styles.container}>
                    <Image 
-                        source={{ uri: image }}
+                        source={image}
                         style={styles.image}
                     />
                     <View style={styles.textContainer}>
@@ -160,6 +171,7 @@ const styles = StyleSheet.create({
 function mapStateToProps({currency}) {
     return { 
         lgPic: currency.lgPic,
+        ticker: currency.ticker,
     };
 }
 

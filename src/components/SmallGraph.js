@@ -33,7 +33,7 @@ class SmallGraph extends Base {
     }
     componentWillReceiveProps(nextProps) {
     
-        
+
     }
     handleSelect(event) {
         console.log(event)
