@@ -28,7 +28,7 @@ export default class GraphPreview extends Base {
     constructor(props, context) {
         super(props, context);
     }
-    
+   
     render() {
         
        
@@ -36,9 +36,7 @@ export default class GraphPreview extends Base {
         return (
             <View style={styles.root}>
                 <SmallGraph/>
-                {
-                    <GraphPreviewInfo/>
-                }
+                <GraphPreviewInfo/>
             </View>
         );
     }
@@ -59,15 +57,15 @@ const styles = StyleSheet.create({
     
 });
 
-function mapStateToProps({currency}) {
+function mapStateToProps({currency, GraphDetail}) {
     return {
-      
+        data: GraphDetail.graph,
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-       
+        fetchDataGraph: (params) => dispatch(fetchDataGraph(params)),
     };
 }
 

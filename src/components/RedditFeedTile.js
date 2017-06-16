@@ -69,10 +69,7 @@ class RedditFeedTile extends Base {
                         
                     </View>
                     <View style={styles.infoContainer}>
-                        <Text 
-                            style={[styles.infoText, { color: colors.black}, { ...fonts.bookMicro}]}
-                            numberOfLines={1}
-                        >/{author}</Text>
+                        
                         <View style={styles.upvote}>
                             <IconButton 
                                 iconName='arrow-up'
@@ -86,7 +83,10 @@ class RedditFeedTile extends Base {
                                 {score}
                             </Text>
                         </View>
-                        
+                        <Text 
+                            style={[styles.infoText, { color: colors.black}, { ...fonts.bookMicro}]}
+                            numberOfLines={1}
+                        >/{author}</Text>
                     </View>
                 </View>
             </TouchableHighlight>
@@ -149,17 +149,17 @@ const styles = StyleSheet.create({
         color: colors.black,
     },
     iconContainer: {
-        width: 20,
-        height: 20,
+        width: 18,
+        height: 18,
         borderRadius: 20/2,
-        backgroundColor: colors.green,
+        backgroundColor: colors.accent,
         ...mixins.column,
         ...mixins.center,
         marginRight: 5,
     },
     icon: {
         color: colors.white,
-        fontSize: 12,
+        fontSize: 8,
     },
     upvote: {
         marginTop: 4,

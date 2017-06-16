@@ -14,8 +14,13 @@ import {LineChart} from 'react-native-charts-wrapper';
 import update from 'immutability-helper';
 
 import Base from './Base';
+import MainGraph from './MainGraph';
+import TimeSelection from './TimeSelection';
 
-import { fetchCurrencyData } from '../actions/Currency';
+import { fetchGraphDataSet } from '../actions/GraphDetail';
+
+//import { fetchCurrencyData } from '../actions/Currency';
+
 import { colors, defaults, fonts, mixins, variables } from '../styles';
 
 class GraphDetail extends Base {
@@ -37,128 +42,36 @@ class GraphDetail extends Base {
     }
     constructor(props, context) {
         super(props, context);
-        this.autoBind('handleSelect');
-        this.state = {
-              data: {},
-              legend: {
-                enabled: true,
-                textColor: processColor('blue'),
-                textSize: 12,
-                position: 'BELOW_CHART_RIGHT',
-                form: 'SQUARE',
-                formSize: 14,
-                xEntrySpace: 10,
-                yEntrySpace: 5,
-                formToTextSpace: 5,
-                wordWrapEnabled: true,
-                maxSizePercent: 0.5,
-                custom: {
-                  colors: [processColor('red'), processColor('blue'), processColor('green')],
-                  labels: ['Company X', 'Company Y', 'Company Dashed']
-                }
-              },
-              marker: {
-                enabled: true,
-                backgroundTint: processColor('teal'),
-                  markerColor: processColor('#F0C0FF8C'),
-                textColor: processColor('white'),
-
-              }
-            };
+        this.autoBind();
     }
-    handleSelect(event) {
-        let entry = event.nativeEvent
-        if (entry == null) {
-          this.setState({...this.state, selectedEntry: null})
-        } else {
-          this.setState({...this.state, selectedEntry: JSON.stringify(entry)})
-        }
-    }
-    componentDidMount(){
+   
+    componentDidMount() {
 
         var params = {
 
             ticker: this.props.ticker,
             currency: this.props.currency,
             market: this.props.market,
-    
+            time: this.props.time,
         }
 
-        this.props.fetchCurrencyData(params)
-         this.setState(
-              update(this.state, {
-                data: {
-                  $set: {
-                    dataSets: [{
-                      values: [{y: 100}, {y: 110}, {y: 105}, {y: 115}],
-                      label: 'Company X',
-                      config: {
-                        lineWidth: 2,
-                        drawCircles: false,
-                        highlightColor: processColor('red'),
-                        color: processColor('red'),
-                        drawFilled: true,
-                        fillColor: processColor('red'),
-                        fillAlpha: 60,
-                            valueTextSize: 15,
-                        valueFormatter: "##.000",
-                        dashedLine: {
-                          lineLength: 20,
-                          spaceLength: 20
-                        }
-                      }
-                    }],
-                  }
-                },
-                xAxis: {
-                  $set: {
-                    valueFormatter: ['Q1', 'Q2', 'Q3', 'Q4']
-                  }
-                }
-              })
-            );
+        this.props.fetchGraphDataSet(params)
+         
     }
     render() {
         console.log('GraphDetail')
         console.log(this.props)
         return (
             <View style={styles.root}>
-
-                   <View style={{height:80}}>
-                     <Text> selected entry</Text>
-                     <Text> {this.state.selectedEntry}</Text>
-                   </View>
-
-                   <View style={styles.container}>
-                     <LineChart
-                       style={styles.chart}
-                       data={this.state.data}
-                       description={{text: ''}}
-                       legend={this.state.legend}
-                       marker={this.state.marker}
-                       xAxis={this.state.xAxis}
-                       drawGridBackground={false}
-                       borderColor={processColor('teal')}
-                       borderWidth={1}
-                       drawBorders={true}
-
-                       touchEnabled={true}
-                       dragEnabled={true}
-                       scaleEnabled={true}
-                       scaleXEnabled={true}
-                       scaleYEnabled={true}
-                       pinchZoom={true}
-                       doubleTapToZoomEnabled={true}
-
-                       dragDecelerationEnabled={true}
-                       dragDecelerationFrictionCoef={0.99}
-
-                       keepPositionOnRotation={false}
-                       onSelect={this.handleSelect.bind(this)}
-                     />
-                   </View>
-
-                 </View>
+                <View style={styles.container}>
+                    <View style={styles.coin}>
+                        <Text style={styles.coinTitle}>{this.props.name}</Text>
+                        <Text style={styles.coinSubtitle}>{this.props.ticker}</Text>
+                    </View>
+                    <MainGraph/>
+                    <TimeSelection/>
+                </View>
+            </View>
         );
     }
 }
@@ -168,33 +81,49 @@ const styles = StyleSheet.create({
         marginTop: variables.HEADER_HEIGHT,
         ...mixins.fullHeight,
         ...mixins.column,
-        ...mixins.flexStart,
-        backgroundColor: colors.lightGray
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        backgroundColor: colors.secondaryDark,
     },
     container: {
-        flex: 1,
-        backgroundColor: '#F5FCFF'
+        width: '95%',
+        height: '95%',
+        ...mixins.column,
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        backgroundColor: colors.primaryLight,
+        borderRadius: 6,
+        ...mixins.createShadow(1),
     },
-    chart: {
-        flex: 1
+    coin: {
+        marginTop: '4%',
+        height: 50,
+        ...mixins.column,
+        alignItems: 'center',
+        justifyContent: 'space-around',
+    },
+    coinTitle: {
+        ...fonts.bookSmall,
+        color: colors.accent,
+    },
+    coinSubtitle: {
+        color: colors.setTeal,
+        ...fonts.bookTiny,
     }
 });
 
 
-function mapStateToProps({currency}) {
+function mapStateToProps({currency, GraphDetail}) {
     return {
-        data: currency.dataSet,
-        currency: currency.currency,
         ticker: currency.ticker,
-        currentPrice: currency.currentPrice,
         name: currency.name,
-        market: currency.market
+        time: GraphDetail.time,
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-       fetchCurrencyData: (params) => dispatch(fetchCurrencyData(params)),
+       fetchGraphDataSet: (params) => dispatch(fetchGraphDataSet(params)),
     };
 }
 

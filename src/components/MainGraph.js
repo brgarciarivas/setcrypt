@@ -23,7 +23,7 @@ import { colors, defaults, fonts, mixins, variables } from '../styles';
 
 
 
-class SmallGraph extends Base {
+class MainGraph extends Base {
     constructor(props, context) {
         super(props, context);
         this.autoBind('handleSelect');
@@ -36,7 +36,13 @@ class SmallGraph extends Base {
 
     }
     handleSelect(event) {
-        console.log(event)
+        let entry = event.nativeEvent
+        if (entry == null) {
+
+          //this.setState({...this.state, selectedEntry: null})
+        } else {
+          this.setState({ price: JSON.stringify(entry.y)})
+        }
     }
     render() {
         
@@ -96,7 +102,7 @@ class SmallGraph extends Base {
             }
         }
         var marker = {
-            enabled: true,
+            enabled: false,
             backgroundTint: processColor(colors.transparent),
             markerColor: processColor(colors.transparent),
             textColor: processColor(colors.black),
@@ -131,10 +137,10 @@ class SmallGraph extends Base {
         
         return (
             <View style={styles.root}>
+                <Text>{this.state.price}</Text>
                 {
                     this.props.x.length > 0 ? 
                     
-
                     <LineChart
                         style={styles.chart}
                         data={data}
@@ -173,19 +179,20 @@ class SmallGraph extends Base {
 
 const styles = StyleSheet.create({
     root: {
-        ...mixins.row,
-
+        ...mixins.column,
+        alignItems: 'center',
+        justifyContent: 'flex-start',
     },
     chart: {
         width: mixins.fullWidth.width * .93,
-        height: mixins.fullHeight.height * .4,
+        height: mixins.fullHeight.height * .6,
     }
 });
 
-function mapStateToProps({currency}) {
+function mapStateToProps({GraphDetail}) {
     return {
-        x: currency.xData,
-        y: currency.yData
+        x: GraphDetail.xData,
+        y: GraphDetail.yData
     };
 }
 
@@ -195,4 +202,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SmallGraph);
+export default connect(mapStateToProps, mapDispatchToProps)(MainGraph);

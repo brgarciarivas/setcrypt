@@ -1,4 +1,4 @@
-import { API_ROOT } from '../constants';
+import { API_ROOT, API_GRAPH_ROOT } from '../constants';
 
 export default {
     get(route) {
@@ -49,7 +49,7 @@ export default {
             .catch(err => { throw err; });
     },
     graph(query) {
-        return fetch(API_ROOT, {
+        return fetch(API_GRAPH_ROOT, {
             method: 'POST',
             xhrFields: {
                 withCredentials: true

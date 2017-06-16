@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
         ...mixins.flexStart,
     },
     title: {
-        color: colors.setTeal,
+        color: colors.mainGray,
         ...fonts.bookMicro,
         marginBottom: 10,
     }

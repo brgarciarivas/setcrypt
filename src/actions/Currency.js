@@ -11,6 +11,8 @@ export function selectedCurrency(params) {
     };
 }
 
+
+
 export function fetchMarketCap (params) {
     return dispatch => {
         api.getExt(`https://coinmarketcap-nexuist.rhcloud.com/api/${params.ticker}/market_cap`)
@@ -33,17 +35,6 @@ export function fetchRedditThread (params) {
             
             payload.data.children.shift();
             dispatch(updateReddit(payload.data.children))
-        })
-    }
-}
-
-export function fetchCurrencyData (params) {
- 
-    return dispatch => {
-        api.getExt(`https://min-api.cryptocompare.com/data/generateAvg?fsym=${params.ticker}&tsym=${params.currency}&markets=${params.market}`)
-        .then(payload => {
-            console.log('payload')
-            console.log(payload);
         })
     }
 }

@@ -28,11 +28,9 @@ export const darkPurple = '#4B0082';
 export const lighterTeal = '#4BBBC5';
 export const facebookBlue = '#3b5998';
 export const black = '#000000';
-export const setTeal = '#bdd1e9';
+export const setGray = '#bdd1e9';
 
 //setcrypt colors
-
-
 
 export const primaryLight = white;
 export const primary = lighterGray;
@@ -41,6 +39,7 @@ export const secondary = white;
 export const secondaryDark = darkWhite;
 export const accentLight = lightTeal;
 export const accent = teal;
+export const mainGray = setGray;
 
 // transparent colors
 export const transparent = 'rgba(0, 0, 0, 0)';
