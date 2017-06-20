@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 
 import Base from './Base';
 
-import { fetchGraphDataSet, toggleTimeSelection } from '../actions/GraphDetail';
+import { fetchGraphDataSet, receiveTimeSelection } from '../actions/GraphDetail';
 
 //import { fetchCurrencyData } from '../actions/Currency';
 
@@ -31,7 +31,7 @@ class TimeSelectionTile extends Base {
             time: this.props.time,
         }
         console.log(params)
-        this.props.toggleTimeSelection(params.time)
+        this.props.receiveTimeSelection(params.time)
         this.props.fetchGraphDataSet(params)
     }
     render() {
@@ -80,8 +80,8 @@ function mapStateToProps({currency, GraphDetail}) {
 function mapDispatchToProps(dispatch) {
     return {
        fetchGraphDataSet: (params) => dispatch(fetchGraphDataSet(params)),
-       toggleTimeSelection: (time) => dispatch(
-        toggleTimeSelection(time)),
+       receiveTimeSelection: (time) => dispatch(
+        receiveTimeSelection(time)),
     };
 }
 

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+    import React, { Component } from 'react';
 import {
     StyleSheet,
     View,
@@ -19,6 +19,6 @@ const styles = StyleSheet.create({
         ...mixins.column,
         ...mixins.center,
         backgroundColor: colors.green,
-        marginTop: variables.HEADER_HEIGHT
+        //marginTop: variables.HEADER_HEIGHT
     }
 });

@@ -21,6 +21,13 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
+    case types.CLEAR_GRAPH_PREVIEW_DATA: {
+        return {
+            ...state,
+            xData: [],
+            yData: [],
+        }
+    }
     case types.UPDATE_MARKET_CAP: {
         return {
             ...state,

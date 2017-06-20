@@ -96,7 +96,7 @@ class SmallGraph extends Base {
             }
         }
         var marker = {
-            enabled: true,
+            enabled: false,
             backgroundTint: processColor(colors.transparent),
             markerColor: processColor(colors.transparent),
             textColor: processColor(colors.black),

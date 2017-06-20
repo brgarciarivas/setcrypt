@@ -5,10 +5,19 @@ const initialState = {
     xData: [],
     yData: [],
     time: 'Day',
+    highLow: 0,
+    volume: 0,
+    weightedAverage: 0,
 };
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
+        case types.RECEIVE_WEIGHTED_AVERAGE: {
+            return {
+                ...state,
+                weightedAverage: action.data
+            }
+        }
         case types.RECEIVE_GRAPH_DETAIL_SET: {
             return {
                 ...state,
@@ -16,10 +25,29 @@ export default function reducer(state = initialState, action) {
                 yData: action.graphDataSet.y 
             }
         }
-        case types.TOGGLE_TIME_SELECTION: {
+        case types.RECEIVE_VOLUME: {
+            return {
+                ...state,
+                volume: action.data,
+            }
+        }
+        case types.RECEIVE_TIME_SELECTION: {
             return {
                 ...state,
                 time: action.time
+            }
+        }
+        case types.RECEIVE_HIGH_LOW: {
+            return {
+                ...state,
+                highLow: action.data,
+            }
+        }
+        case types.CLEAR_GRAPH_DATA: {
+            return {
+                ...state,
+                xData: [],
+                yData: [],
             }
         }
         default:

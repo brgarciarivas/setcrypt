@@ -137,7 +137,6 @@ class MainGraph extends Base {
         
         return (
             <View style={styles.root}>
-                <Text>{this.state.price}</Text>
                 {
                     this.props.x.length > 0 ? 
                     
@@ -172,6 +171,7 @@ class MainGraph extends Base {
                         color={colors.accent}
                     />
                 }
+                <Text style={styles.price}>${this.state.price}</Text>
             </View>
         );
     }
@@ -179,13 +179,21 @@ class MainGraph extends Base {
 
 const styles = StyleSheet.create({
     root: {
+        height: mixins.fullHeight.height * .55,
         ...mixins.column,
         alignItems: 'center',
         justifyContent: 'flex-start',
     },
+    buffer: {
+        alignSelf: 'center',
+    },
+    price: {
+        height: 30,
+        ...fonts.bookLarge,
+    },
     chart: {
         width: mixins.fullWidth.width * .93,
-        height: mixins.fullHeight.height * .6,
+        height: mixins.fullHeight.height * .5,
     }
 });
 

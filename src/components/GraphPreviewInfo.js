@@ -66,9 +66,7 @@ class GraphPreviewInfo extends Base {
            
          <View style={styles.textContainer}>
             <View style={styles.infoContainer}>
-                <Text style={styles.info}>
-                    7 Day Price Growth
-                </Text>
+                
                 <View style={styles.priceChange}>
                     <Text style={[styles.stat, {...changeColor}]}>
 
@@ -85,15 +83,15 @@ class GraphPreviewInfo extends Base {
                     />
 
                 </View>
-               
+                <Text style={styles.info}>
+                    7 Day Price Growth
+                </Text>
             </View>
 
             <View  style={styles.divider}/>
 
             <View style={styles.infoContainer}>
-                <Text style={styles.info}>
-                    Current Price
-                </Text>
+                
                 <Text style={styles.stat}>
                    ${
                         this.props.currentPrice !== null ?
@@ -102,14 +100,15 @@ class GraphPreviewInfo extends Base {
                         'N/A'
                     }
                 </Text>
+                <Text style={styles.info}>
+                    Current Price
+                </Text>
             </View>
 
             <View  style={styles.divider}/>
         
             <View style={styles.infoContainer}>
-                <Text style={styles.info}>
-                    Market Cap
-                </Text>
+                
                 <Text style={styles.stat}>
                     ${
                         this.props.marketCap !== null ?
@@ -117,6 +116,9 @@ class GraphPreviewInfo extends Base {
                         :
                         'N/A'
                     }
+                </Text>
+                <Text style={styles.info}>
+                    Market Cap
                 </Text>
             </View>
 

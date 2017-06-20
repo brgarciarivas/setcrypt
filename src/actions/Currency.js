@@ -52,6 +52,7 @@ export function fetchPriceChange (params) {
 
 export function fetchGraphData (params) {
     return dispatch => {
+        dispatch(clearGraphPreviewData());
         api.getExt(`https://min-api.cryptocompare.com/data/histoday?fsym=${params.ticker}&tsym=${params.currency}\&limit=${params.time}`)
         .then(payload => {
        
@@ -94,6 +95,12 @@ export function getCurrentPrice (params) {
         .then(payload => {
             dispatch(updatePrice(payload[params.currency]))
         })
+    }
+}
+
+export function clearGraphPreviewData() {
+    return {
+        type: types.CLEAR_GRAPH_PREVIEW_DATA,
     }
 }
 

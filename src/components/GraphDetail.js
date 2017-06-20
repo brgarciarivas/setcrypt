@@ -16,6 +16,7 @@ import update from 'immutability-helper';
 import Base from './Base';
 import MainGraph from './MainGraph';
 import TimeSelection from './TimeSelection';
+import GraphDetailInfo from './GraphDetailInfo';
 
 import { fetchGraphDataSet } from '../actions/GraphDetail';
 
@@ -64,12 +65,14 @@ class GraphDetail extends Base {
         return (
             <View style={styles.root}>
                 <View style={styles.container}>
+                    
+                    <TimeSelection/>
+                    <MainGraph/>
                     <View style={styles.coin}>
                         <Text style={styles.coinTitle}>{this.props.name}</Text>
                         <Text style={styles.coinSubtitle}>{this.props.ticker}</Text>
                     </View>
-                    <MainGraph/>
-                    <TimeSelection/>
+                    <GraphDetailInfo/>
                 </View>
             </View>
         );
@@ -86,6 +89,7 @@ const styles = StyleSheet.create({
         backgroundColor: colors.secondaryDark,
     },
     container: {
+        marginTop: 16,
         width: '95%',
         height: '95%',
         ...mixins.column,

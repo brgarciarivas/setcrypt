@@ -8,14 +8,21 @@ import api from '../scripts/api';
 //NOTE GETTING THE CLOSE PRICE
 export function fetchGraphDataSet (params) {
     return dispatch => {
+        dispatch(clearGraphData());
         api.graph({
             query: `{
                 graphData(
                     currency: "${params.ticker}", 
                     start: "${params.time}"
                 ) {
-                    date,
-                    close,
+                    graphData{
+                        date,
+                        price
+                    },
+                    high,
+                    low,
+                    volume,
+                    weightedAverage   
                 }
             }`
         }).then((data) => {
@@ -23,11 +30,12 @@ export function fetchGraphDataSet (params) {
             var xData = [];
             var yData = [];
 
-            var length = data.graphData.length;
+            var length = data.graphData.graphData.length;
             var unit;
+
             switch (params.time) {
                 case 'Day':
-                    unit = 'hh';
+                    unit = 'h';
                 break;
                 case 'Week':
                     unit = 'dd';
@@ -42,13 +50,17 @@ export function fetchGraphDataSet (params) {
             }
 
             for( var i = 0; i < length; i++) {
-                xData.push(moment.unix(data.graphData[i].date).format(unit));
-                yData.push({'y': data.graphData[i].close});
+                xData.push(moment.unix(data.graphData.graphData[i].date).format(unit));
+                yData.push({'y': data.graphData.graphData[i].price});
             }
 
             var dataSet = { x: xData, y: yData};
 
-            dispatch(updateGraphDatSet(dataSet))
+            console.log(dataSet)
+            dispatch(receiveVolume(data.graphData.volume));
+            dispatch(receiveHighLow({high: data.graphData.high, low: data.graphData.low}));
+            dispatch(receiveGraphDatSet(dataSet));
+            dispatch(receiveWeightedAverage(data.graphData.weightedAverage));
         }).catch((err) => {
             console.log('err')
             console.log(err)
@@ -56,15 +68,41 @@ export function fetchGraphDataSet (params) {
     };
 };
 
-
-export function toggleTimeSelection (time) {
+export function clearGraphData() {
     return {
-        type: types.TOGGLE_TIME_SELECTION,
+        type: types.CLEAR_GRAPH_DATA,
+    }
+}
+
+export function receiveWeightedAverage(data) {
+    return {
+        type: types.RECEIVE_WEIGHTED_AVERAGE,
+        data
+    }
+}
+
+export function receiveVolume(data) {
+    return {
+        type: types.RECEIVE_VOLUME,
+        data
+    }
+}
+
+export function receiveHighLow(data) {
+    return {
+        type: types.RECEIVE_HIGH_LOW,
+        data
+    }
+}
+
+export function receiveTimeSelection (time) {
+    return {
+        type: types.RECEIVE_TIME_SELECTION,
         time,
     }
 }
 
-export function updateGraphDatSet (graphDataSet) {
+export function receiveGraphDatSet (graphDataSet) {
     return {
         type: types.RECEIVE_GRAPH_DETAIL_SET,
         graphDataSet
