@@ -34,11 +34,11 @@ class GraphDetailInfo extends Base {
         return (
             <View style={styles.root}>
                 <View style={styles.con}>
-                    <Text style={styles.value}>{highLow.high}</Text>
+                    <Text style={styles.value}>${highLow.high}</Text>
                     <Text style={styles.title}>{time} High</Text>
                 </View>
                 <View style={styles.con}>
-                    <Text style={styles.value}>{highLow.low}</Text>
+                    <Text style={styles.value}>${highLow.low}</Text>
                     <Text style={styles.title}>{time} Low</Text>
                 </View>
                 <View style={styles.con}>
@@ -46,7 +46,7 @@ class GraphDetailInfo extends Base {
                     <Text style={styles.title}>Volume</Text>
                 </View>
                 <View style={styles.con}>
-                    <Text style={styles.value}>{weightedAverage}</Text>
+                    <Text style={styles.value}>${weightedAverage}</Text>
                     <Text style={styles.title}>Weighted Average</Text>
                 </View>
 
@@ -57,17 +57,25 @@ class GraphDetailInfo extends Base {
 
 const styles = StyleSheet.create({
     root: {
-        marginTop: 20,
+        borderTopColor: colors.accent,
+        borderTopWidth: 1,
+        borderBottomColor: colors.accent,
+        borderBottomWidth: 1,
+        height: 80,
+        marginTop: 28,
         ...mixins.row,
         ...mixins.center,
     },
     con: {
         flex: 1,
+        height: '100%',
         ...mixins.column,
-        ...mixins.center,
+        alignItems: 'center',
+        justifyContent: 'flex-start',
     },
     value: {
        ...fonts.bookSmall, 
+       marginTop: 16,
     },
     title: {
         textAlign: 'center',

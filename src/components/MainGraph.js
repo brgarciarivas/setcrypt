@@ -188,11 +188,12 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     },
     price: {
+        marginTop: 8,
         height: 30,
         ...fonts.bookLarge,
     },
     chart: {
-        width: mixins.fullWidth.width * .93,
+        width: mixins.fullWidth.width * .95,
         height: mixins.fullHeight.height * .5,
     }
 });

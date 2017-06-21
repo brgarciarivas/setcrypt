@@ -35,16 +35,16 @@ export function fetchGraphDataSet (params) {
 
             switch (params.time) {
                 case 'Day':
-                    unit = 'h';
+                    unit = 'H:mm';
                 break;
                 case 'Week':
                     unit = 'dd';
                 break;
                 case 'Month':
-                    unit = 'dd';
+                    unit = 'M/DD';
                 break;
                 case 'Year':
-                    unit = 'mm';
+                    unit = 'MM/DD';
                 break;
 
             }
@@ -55,7 +55,7 @@ export function fetchGraphDataSet (params) {
             }
 
             var dataSet = { x: xData, y: yData};
-
+            console.log('dataSet')
             console.log(dataSet)
             dispatch(receiveVolume(data.graphData.volume));
             dispatch(receiveHighLow({high: data.graphData.high, low: data.graphData.low}));
