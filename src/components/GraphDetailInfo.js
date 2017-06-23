@@ -33,22 +33,49 @@ class GraphDetailInfo extends Base {
         } = this.props
         return (
             <View style={styles.root}>
-                <View style={styles.con}>
-                    <Text style={styles.value}>${highLow.high}</Text>
-                    <Text style={styles.title}>{time} High</Text>
+                <View style={styles.columnCon}>
+                    <View style={styles.con}>
+                        <Text style={styles.value}>
+                            ${
+                                 highLow !== null ?
+                                 highLow.high.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                                 : 
+                                 'N/A'
+                             }
+                        </Text>
+                        <Text style={styles.title}>{time} High</Text>
+                    </View>
+                    <View style={styles.con}>
+                        <Text style={styles.value}>
+                            ${
+                                 highLow !== null ?
+                                 highLow.low.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                                 : 
+                                 'N/A'
+                             }
+                        </Text>
+                        <Text style={styles.title}>{time} Low</Text>
+                    </View>
                 </View>
-                <View style={styles.con}>
-                    <Text style={styles.value}>${highLow.low}</Text>
-                    <Text style={styles.title}>{time} Low</Text>
+                <View style={styles.columnCon}>
+                    <View style={styles.con}>
+                        <Text style={styles.value}>
+                            ${
+                                 volume !== null ?
+                                 volume.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                                 : 
+                                 'N/A'
+                             }
+                        </Text>
+                        <Text style={styles.title}>Volume</Text>
+                    </View>
+                    <View style={styles.con}>
+                        <Text style={styles.value}>${weightedAverage}</Text>
+                        <Text style={styles.title}>Weighted Average</Text>
+                    </View>
                 </View>
-                <View style={styles.con}>
-                    <Text style={styles.value}>{volume}</Text>
-                    <Text style={styles.title}>Volume</Text>
-                </View>
-                <View style={styles.con}>
-                    <Text style={styles.value}>${weightedAverage}</Text>
-                    <Text style={styles.title}>Weighted Average</Text>
-                </View>
+               
+               
 
             </View>
         );
@@ -57,18 +84,20 @@ class GraphDetailInfo extends Base {
 
 const styles = StyleSheet.create({
     root: {
-        borderTopColor: colors.accent,
-        borderTopWidth: 1,
-        borderBottomColor: colors.accent,
-        borderBottomWidth: 1,
-        height: 80,
-        marginTop: 28,
+        // borderTopColor: colors.accent,
+        // borderTopWidth: 1,
+        // borderBottomColor: colors.accent,
+        // borderBottomWidth: 1,
         ...mixins.row,
         ...mixins.center,
     },
-    con: {
+    columnCon: {
+        ...mixins.column,
+        ...mixins.center,
         flex: 1,
-        height: '100%',
+    },
+    con: {
+        
         ...mixins.column,
         alignItems: 'center',
         justifyContent: 'flex-start',

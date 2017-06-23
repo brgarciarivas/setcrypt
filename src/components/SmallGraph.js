@@ -99,7 +99,6 @@ class SmallGraph extends Base {
             enabled: false,
             backgroundTint: processColor(colors.transparent),
             markerColor: processColor(colors.transparent),
-            textColor: processColor(colors.black),
         };
         var data = {
             dataSets: [
@@ -109,14 +108,18 @@ class SmallGraph extends Base {
                     config: {
                         drawGridBackground: false,
                         drawBorders: false,
-                        lineWidth: 2,
+                        lineWidth: 3,
                         drawCircles: false,
-                        highlightColor: processColor(colors.accent),
+                        highlightEnabled: false,
+                        highlightColor: processColor(colors.red),
                         color: processColor(colors.accent),
                         drawFilled: true,
                         fillColor: processColor(colors.accent),
-                        fillAlpha: 80,
+                        fillAlpha: 100,
+                        mode: 'CUBIC_BEZIER',
                         valueTextSize: 1,
+                        drawFilled: true,
+                        drawCubicIntensity: .09,
                         valueFormatter: "##.000",
                         dashedLine: {
                             lineLength: 0,
@@ -138,9 +141,9 @@ class SmallGraph extends Base {
                     <LineChart
                         style={styles.chart}
                         data={data}
-                        description={{text: ''}}
                         legend={legend}
                         drawGridBackground={false}
+                        chartDescription={{text:' '}}
                         borderColor={processColor('teal')}
                         drawBorders={false}
                         touchEnabled={true}
@@ -150,7 +153,6 @@ class SmallGraph extends Base {
                         scaleYEnabled={false}
                         pinchZoom={true}
                         doubleTapToZoomEnabled={true}
-                        chartDescription={{text:'_'}}
                         dragDecelerationEnabled={true}
                         dragDecelerationFrictionCoef={0.99}
                         xAxis={xline}

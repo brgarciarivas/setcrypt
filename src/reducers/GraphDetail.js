@@ -5,9 +5,9 @@ const initialState = {
     xData: [],
     yData: [],
     time: 'Day',
-    highLow: 0,
-    volume: 0,
-    weightedAverage: 0,
+    highLow: null,
+    volume: null,
+    weightedAverage: null,
 };
 
 export default function reducer(state = initialState, action) {

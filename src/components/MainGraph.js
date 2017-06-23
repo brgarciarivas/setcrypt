@@ -122,6 +122,8 @@ class MainGraph extends Base {
                         drawFilled: true,
                         fillColor: processColor(colors.accent),
                         fillAlpha: 80,
+                        mode: 'CUBIC_BEZIER',
+                        drawCubicIntensity: .09,
                         valueTextSize: 1,
                         valueFormatter: "##.000",
                         dashedLine: {
@@ -137,40 +139,42 @@ class MainGraph extends Base {
         
         return (
             <View style={styles.root}>
-                {
-                    this.props.x.length > 0 ? 
-                    
-                    <LineChart
-                        style={styles.chart}
-                        data={data}
-                        description={{text: ''}}
-                        legend={legend}
-                        drawGridBackground={false}
-                        borderColor={processColor('teal')}
-                        drawBorders={false}
-                        touchEnabled={true}
-                        dragEnabled={true}
-                        scaleEnabled={false}
-                        scaleXEnabled={false}
-                        scaleYEnabled={false}
-                        pinchZoom={true}
-                        doubleTapToZoomEnabled={true}
-                        chartDescription={{text:'_'}}
-                        dragDecelerationEnabled={true}
-                        dragDecelerationFrictionCoef={0.99}
-                        xAxis={xline}
-                        yAxis={yLine}
-                        keepPositionOnRotation={false}
-                        onSelect={this.handleSelect}
-                        marker={marker}
-                    />
-                    :
-                    <Bars
-                        style={defaults.buffer}
-                        size={variables.LOADER_SIZE * 0.5}
-                        color={colors.accent}
-                    />
-                }
+                <View style={styles.con}>
+                    {
+                        this.props.x.length > 0 ? 
+                        
+                        <LineChart
+                            style={styles.chart}
+                            data={data}
+                            description={{text: ''}}
+                            legend={legend}
+                            drawGridBackground={false}
+                            borderColor={processColor('teal')}
+                            drawBorders={false}
+                            touchEnabled={true}
+                            dragEnabled={true}
+                            scaleEnabled={false}
+                            scaleXEnabled={false}
+                            scaleYEnabled={false}
+                            pinchZoom={true}
+                            doubleTapToZoomEnabled={true}
+                            chartDescription={{text:' '}}
+                            dragDecelerationEnabled={true}
+                            dragDecelerationFrictionCoef={0.99}
+                            xAxis={xline}
+                            yAxis={yLine}
+                            keepPositionOnRotation={false}
+                            onSelect={this.handleSelect}
+                            marker={marker}
+                        />
+                        :
+                        <Bars
+                            style={defaults.buffer}
+                            size={variables.LOADER_SIZE * 0.5}
+                            color={colors.accent}
+                        />
+                    }
+                </View>
                 <Text style={styles.price}>${this.state.price}</Text>
             </View>
         );
@@ -191,6 +195,12 @@ const styles = StyleSheet.create({
         marginTop: 8,
         height: 30,
         ...fonts.bookLarge,
+    },
+    con:{
+        ...mixins.column,
+        ...mixins.center,
+        width: mixins.fullWidth.width * .95,
+        height: mixins.fullHeight.height * .5,
     },
     chart: {
         width: mixins.fullWidth.width * .95,
