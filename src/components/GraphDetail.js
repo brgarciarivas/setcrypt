@@ -65,14 +65,16 @@ class GraphDetail extends Base {
         return (
             <View style={styles.root}>
                 <View style={styles.container}>
-                    
-                    <TimeSelection/>
-                    <MainGraph/>
                     <View style={styles.coin}>
                         <Text style={styles.coinTitle}>{this.props.name}</Text>
                         <Text style={styles.coinSubtitle}>{this.props.ticker}</Text>
                     </View>
                     <GraphDetailInfo/>
+
+                    
+                    <MainGraph/>
+                    <TimeSelection/>
+                    
                 </View>
             </View>
         );

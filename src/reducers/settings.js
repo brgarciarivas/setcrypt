@@ -2,17 +2,17 @@ import * as types from '../constants/actionTypes';
 
 const initialState = {
     currency: 'USD',
-    ticker: 'BTC',
+    ticker: 'ETH',
     landCugrrency: [
         'USD', 'EUR', 'MXN', 'JPY', 'AUD', 'CAD', 'KRW'
     ],
     cryptCurrency: [
-        {
-            ticker: 'BTC',
-            name: 'Bitcoin',
-            market: 'Coinbase',
-            pic: 'https://jackpotfaucet.com/bitcoin.png',
-        },
+        // {
+        //     ticker: 'BTC',
+        //     name: 'Bitcoin',
+        //     market: 'Coinbase',
+        //     pic: 'https://jackpotfaucet.com/bitcoin.png',
+        // },
         {
             ticker: 'ETH',
             name: 'Ethereum',

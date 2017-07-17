@@ -80,7 +80,6 @@ export const navBar = {
     height: variables.HEADER_HEIGHT,
     width: variables.SCREEN_WIDTH,
     alignItems: 'center',
-    color: colors.primary,
     backgroundColor: colors.secondaryDark,
     ...mixins.createShadow(1),
 };

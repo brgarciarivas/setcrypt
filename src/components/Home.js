@@ -28,11 +28,14 @@ class Home extends Base {
                     color={colors.mainBlack}
                 />
                 <Text style={defaults.navBarTitle}>{props.title}</Text>
-                <IconButton
-                    iconName='area-chart'
-                    color={colors.mainBlack}
-                    onPress={() => Actions.GraphDetail({ type: 'push' })}
-                />
+                {
+                    <IconButton
+                        iconName='gear'
+                        style={[...defaults.navNoIcon]}
+                        color={colors.mainBlack}
+                        //onPress={() => Actions.GraphDetail({ type: 'push' })}
+                    />
+                }
             </View>
         );
     }
@@ -48,10 +51,13 @@ class Home extends Base {
                     contentContainerStyle={styles.container}
                 >
                     <CoinSelection/>
-                    <Text style={styles.title}>
-                        {this.props.name} 7 Day Historical Graph
-                    </Text>
-                    <GraphPreview/>
+                    
+                    
+                        <Text style={styles.title}>
+                            {this.props.name} 7 Day Historical Graph
+                        </Text>
+                       <GraphPreview/>
+                    
                     <Text style={[styles.title, {marginTop: 10,}]}>
                         R/{this.props.name} Reddit Feed
                     </Text>

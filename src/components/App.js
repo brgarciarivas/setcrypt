@@ -4,27 +4,34 @@ import { Router, Scene, Actions, Modal, ActionConst } from 'react-native-router-
 import { Provider, connect } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga';
+import io from 'socket.io-client';
+
 //import createSagaMiddleware from 'redux-saga';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import reducers from '../reducers';
 //import rootSaga from '../sagas';
 
-
+import { API_ROOT } from '../constants';
 import { ToggleHomeCoin } from '../actions/env';
+
 
 // connects react router to redux to pass scene info
 const ReduxRouter = connect()(Router);
+const sagaMiddleware = createSagaMiddleware();
+
 // sets up sagas for modularized asyncronicity
 //const sagaMiddleware = createSagaMiddleware();
 
 
-const middleware = [thunk];
+const middleware = [thunk, sagaMiddleware];
 const store = compose(
     applyMiddleware(...middleware)
 )(createStore)(reducers);
 
 //sagaMiddleware.run(rootSaga);
+
 
 // actions
 
@@ -66,12 +73,29 @@ class App extends Base {
         this.autoBind();
     }
     componentWillMount() {
+        const socket = io(API_ROOT);
+        // const btc = socket('/BTC');
+
+        // btc.on('BTC', (data) => {
+        //     console.log('btc plz')
+        //     console
+        // })
+        console.log(socket)
+
+        socket.on('connect', () => {
+          console.log('lit mane!');
+        });
+        socket.on('btc', (data) => {
+            console.log('twitter data')
+            console.log(data)
+        })
+
+
         var self = this;
         var result = this.props.cryptCurrency.filter(function( coin ) {
-
             return coin.ticker == self.props.ticker;
         });
-       
+        
 
         const {
             ToggleHomeCoin,

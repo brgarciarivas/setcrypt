@@ -28,8 +28,10 @@
     "react-native-vector-icons": "^4.0.1",
     "react-redux": "^5.0.2",
     "redux": "^3.6.0",
-    "redux-saga": "^0.14.6",
+    "redux-saga": "^0.14.8",
     "redux-thunk": "^2.2.0",
+    "socket.io-client": "^2.0.3",
+    "twitter": "^1.7.1",
     "undefined": "^0.1.0"
   },
   "devDependencies": {

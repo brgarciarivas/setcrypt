@@ -40,16 +40,6 @@ export function fetchRedditThread (params) {
 }
 
 
-export function fetchPriceChange (params) {
-    return dispatch => {
-        api.getExt(`https://coinmarketcap-nexuist.rhcloud.com/api/${params.ticker}/change`)
-        .then(payload => {
-        console.log(payload)
-        dispatch(updatePriceChange(payload))
-        })
-    }
-}
-
 export function fetchGraphData (params) {
     return dispatch => {
         dispatch(clearGraphPreviewData());
@@ -72,22 +62,6 @@ export function fetchGraphData (params) {
     };  
 }
 
-export function highLowPrice (params) {
-    return dispatch => {
-        //https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&limit=7&aggregate=7&e=CCCAGG
-        api.getExt(`https://min-api.cryptocompare.com/data/histoday?fsym=${params.ticker}&tsym=${params.currency}\&limit=${params.time}`)
-        .then(payload => {
-            
-            var dataSet = payload.Data.map((data, index) => {
-                var day = moment(new Date(data.time * 1000)).utc();
-                day = day.format('MMM DD')
-                day = parseInt(day)
-                return [ day, data.close];
-            })
-            dispatch(updateDataSet(dataSet))
-        })
-    }
-}
 
 export function getCurrentPrice (params) {
     return dispatch => {

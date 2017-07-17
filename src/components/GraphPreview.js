@@ -35,8 +35,11 @@ export default class GraphPreview extends Base {
     
         return (
             <View style={styles.root}>
-                <SmallGraph/>
-                <GraphPreviewInfo/>
+                
+                    <SmallGraph/>
+                    <GraphPreviewInfo/>
+                
+                
             </View>
         );
     }

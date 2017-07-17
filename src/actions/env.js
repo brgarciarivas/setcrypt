@@ -13,7 +13,6 @@ export function ToggleHomeCoin (params) {
         dispatch(getCurrentPrice(params))
         dispatch(fetchGraphData(params))
         dispatch(fetchRedditThread(params))
-        //dispatch(fetchPriceChange(params))
         dispatch(fetchMarketCap(params))
     }
 }

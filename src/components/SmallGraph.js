@@ -120,7 +120,6 @@ class SmallGraph extends Base {
                         valueTextSize: 1,
                         drawFilled: true,
                         drawCubicIntensity: .09,
-                        valueFormatter: "##.000",
                         dashedLine: {
                             lineLength: 0,
                             spaceLength: 0
@@ -136,8 +135,7 @@ class SmallGraph extends Base {
             <View style={styles.root}>
                 {
                     this.props.x.length > 0 ? 
-                    
-
+        
                     <LineChart
                         style={styles.chart}
                         data={data}

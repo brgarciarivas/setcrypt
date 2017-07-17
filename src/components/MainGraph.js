@@ -139,6 +139,8 @@ class MainGraph extends Base {
         
         return (
             <View style={styles.root}>
+                <Text style={styles.price}>${this.state.price}</Text>
+
                 <View style={styles.con}>
                     {
                         this.props.x.length > 0 ? 
@@ -175,7 +177,6 @@ class MainGraph extends Base {
                         />
                     }
                 </View>
-                <Text style={styles.price}>${this.state.price}</Text>
             </View>
         );
     }
