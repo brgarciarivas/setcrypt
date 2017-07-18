@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
         width: '100%',
         ...mixins.row,
         ...mixins.center,
-        ...fonts.bookMedium,
+        
     },
     infoContainer: {
         height: mixins.fullHeight.height * .08,
