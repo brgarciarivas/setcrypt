@@ -7,7 +7,6 @@ import {
 
 } from 'react-native';
 import { connect } from 'react-redux';
-import Chart from 'react-native-chart';
 import { Bars, Pulse } from 'react-native-loader';
 import { SmoothLine } from 'react-native-pathjs-charts';
 import Icon from 'react-native-vector-icons/FontAwesome';

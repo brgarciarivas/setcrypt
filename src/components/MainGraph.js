@@ -7,9 +7,7 @@ import {
     processColor
 } from 'react-native';
 import { connect } from 'react-redux';
-import Chart from 'react-native-chart';
 import { Bars, Pulse } from 'react-native-loader';
-import { StockLine } from 'react-native-pathjs-charts';
 import {LineChart} from 'react-native-charts-wrapper';
 
 
