@@ -2,9 +2,12 @@
 //  setcrypt-bridge.h
 //  setcrypt
 //
-//  Created by BernSternWhoEarns on 5/30/17.
+//  Created by BernSternWhoEarns on 8/2/17.
 //  Copyright © 2017 Facebook. All rights reserved.
 //
+
+#ifndef setcrypt_bridge_h
+#define setcrypt_bridge_h
 
 #import "React/RCTBridge.h"
 #import "React/RCTViewManager.h"
@@ -13,4 +16,5 @@
 #import "React/RCTBridgeModule.h"
 #import "React/RCTEventDispatcher.h"
 #import "React/RCTEventEmitter.h"
-#import "React/RCTComponent.h"
+
+#endif /* setcrypt_bridge_h */
