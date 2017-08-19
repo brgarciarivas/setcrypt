@@ -38,7 +38,7 @@ class SmallGraph extends Base {
         console.log(event)
     }
     render() {
-        
+        console.log("x" + this.props.x)
         
         var legend =  {
             enabled: false,
@@ -78,7 +78,7 @@ class SmallGraph extends Base {
             },
             avoidFirstLastClipping: true,
             position: 'BOTTOM',
-            valueFormatter: this.props.x
+            valueFormatter: this.props.x 
         }
 
         var yLine = {
@@ -119,7 +119,6 @@ class SmallGraph extends Base {
                         valueTextSize: 1,
                         drawFilled: true,
                         drawCubicIntensity: .09,
-                        valueFormatter: "##.000",
                         dashedLine: {
                             lineLength: 0,
                             spaceLength: 0
